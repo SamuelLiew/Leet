@@ -27,7 +27,7 @@ public class Main {
 
 //        Jump_55(new Integer[] {2,3,1,1,4});
 
-//        K_347(new Integer[] {4,1,-1,2,-1,2,3}, 2);
+        K_347(new Integer[] {4,1,-1,2,-1,2,3}, 2);
 //        Merge_1768("abc", "pqrjk");
 //        Greatest_1071("ABCDEF","ABC");
 //        System.out.println(Arrays.toString(Candies_1431(new int[]{2, 3, 5, 1, 3}, 3)));
@@ -58,7 +58,7 @@ public class Main {
 //        System.out.println(RemoveStars_2390("leet**cod*e"));
 //        System.out.println(AsteroidCollision_735(new int[] {-10,10,5, -11}));
 //        System.out.println(decodeString_394("10[ab]"));
-        System.out.println(predictPartyVictory("RRDDD"));
+//        System.out.println(predictPartyVictory("RRDDD"));
         
     }
     
@@ -70,6 +70,7 @@ public class Main {
 //        RRDDD
 //        R D
 //        There could be multiple rounds.
+
         return "";
     }
     
@@ -847,58 +848,33 @@ public class Main {
         Given an array nums
         return the k most frequent elements
          */
-        // Count all the elements using a hashmap
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int num:nums){
-            if (map.containsKey(num)){
-                map.put(num,map.get(num) + 1);
+
+        // populate hashmap with number as key and counter as value
+        HashMap<Integer, Integer> hashmap = new HashMap<>();
+        for (int num : nums) {
+            if (hashmap.contains(num)) {
+                hashmap.put(num, hashmap.get(num) + 1);
             } else {
-                map.put(num, 1);
+                hashmap.put(num,1);
             }
         }
 
-        // iterate through the Hashmap and list the counters
-        ArrayList<Integer> list = new ArrayList<>();
-        Set<Integer> keySet = map.keySet();
-        for (int key:keySet){
-            list.add(map.get(key));
-        }
-        // create a new sorted list and get the k most frequent elements, store them in another list
-        ArrayList<Integer> sortedList = new ArrayList<>(list);
-        sortedList.sort(Collections.reverseOrder());
-        HashMap<Integer, Integer> counter = new HashMap<>();
-        for (int i = 0; i < k; i++) {
-            if (counter.containsKey(sortedList.get(i))){
-                counter.put(sortedList.get(i),counter.get(sortedList.get(i)) + 1);
-            } else {
-                counter.put(sortedList.get(i), 1);
-            }
+        // loop through the hashmap, get the counters
+        // keep track of the max counter
+        // populate the second hashmap with the counters as key and array of number as value
+        for (int num : hashmap.valueSet()) {
+
         }
 
-        // loop through the counters list and find the indexes where the k most frequent elements occur
-        ArrayList<Integer> answer = new ArrayList<>();
-        List<Integer> keyArray = new ArrayList<>(keySet);
-        System.out.println(keyArray);
-        for (int i = 0; i < list.size(); i++) {
-            if (counter.containsKey(list.get(i))) {
-                if (counter.get(list.get(i))>0) {
-                    System.out.println("key is: " + i);
-                    counter.put(list.get(i), counter.get(list.get(i)) - 1);
-                    answer.add(keyArray.get(i));
-                }
-            }
-        }
+        // loop decrementingly the second hashmap from the max counter as key
+        // and have a counter that keeps track of the total elements in arrays
+        // Once the counter gets higher than k then break;
+        // Keep track of all the keys before the counter gets higher than k
 
-        // change answer to array
-        int[] array = new int[k];
-        for (int i = 0; i < answer.size(); i++) {
-            array[i] = answer.get(i);
-        }
+        // loop through the keys and loop through the arrays and then return the int[]
 
-        for (int num:array) {
-            System.out.println(num);
-        }
 
+        return new int[5];
     }
     public static void Product_238(Integer[] nums) {
         /*
